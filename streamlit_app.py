@@ -13,8 +13,8 @@ st.write(
 # option = st.selectbox('What is your favourite fruit?',('Banana','Strawberries','Peaches'))
 # st.write('Your favourite fruit is:',option)
 
-
-session = get_active_session()
+cnx = st.connection("snowflake")
+session = cnx.session()
 
 name_on_order = st.text_input("Name on Smoothie:", "Name")
 st.write("The name on the Smoothie will be ", name_on_order)
