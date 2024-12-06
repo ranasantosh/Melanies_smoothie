@@ -21,10 +21,6 @@ name_on_order = st.text_input("Name on Smoothie:", "Name")
 st.write("The name on the Smoothie will be ", name_on_order)
 
 my_dataframe = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"))
-
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response.json())
-st_df = st.dataframe(smoothiefroot_response.json(),use_container_width=True)
 # st.dataframe(data=my_dataframe,use_container_width=True)
 
 ingredient_list =  st.multiselect(
@@ -32,6 +28,10 @@ ingredient_list =  st.multiselect(
     ,my_dataframe
     ,max_selections = 5
 )
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+#st.text(smoothiefroot_response.json())
+st_df = st.dataframe(smoothiefroot_response.json(),use_container_width=True)
+
 if ingredient_list:
     #st.write(ingredient_list)
     #st.text(ingredient_list)
